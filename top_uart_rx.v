@@ -1,6 +1,7 @@
-module top #(
+module top_uart_rx #(
 		parameter pBAUD_RATE,
 		parameter pSYS_CLK_FREQ,
+		parameter STOP_BITS = 1, // Number of Stop bits
 		parameter DATA_BITS = 8
 	)(
 		input rx,
@@ -19,7 +20,7 @@ module top #(
 	);
 	
 	// Creating an instance from uart_rx module
-	uart_rx #(.pBAUD_RATE(pBAUD_RATE), .pSYS_CLK_FREQ(pSYS_CLK_FREQ), .DATA_BITS(DATA_BITS)) uart_rx_instance (
+	uart_rx #(.pBAUD_RATE(pBAUD_RATE), .pSYS_CLK_FREQ(pSYS_CLK_FREQ), .STOP_BITS(STOP_BITS), .DATA_BITS(DATA_BITS)) uart_rx_instance (
 		.rx(rx),
 		.rst(rst),
 		.clk(clk),
