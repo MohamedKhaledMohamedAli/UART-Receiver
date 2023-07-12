@@ -12,7 +12,7 @@ module top_tb;
 	reg rst;
 	wire [7:0] rx_dout_tb;
   
-  top #(.pBAUD_RATE(9600), .pSYS_CLK_FREQ(100000000)) uart_top_tb (
+	top_uart_rx #(.pBAUD_RATE(9600), .pSYS_CLK_FREQ(100000000)) uart_top_tb (
 		.rx(rx_data_in_tb),
 		.rst(rst),
 		.sys_clk(clk),
@@ -54,7 +54,6 @@ module top_tb;
 
 		// idle again
 		rx_data_in_tb <=1; 
-		#Tb;
 
 		$display("Tx data : 01011001");
 		$display("Rx data = %b",rx_dout_tb);
